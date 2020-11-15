@@ -6,10 +6,10 @@ Includes:
 - CUDA 10.1 install scripts adapted from [nvidia/container-images/cuda](https://gitlab.com/nvidia/container-images/cuda/-/tree/master/dist/10.1/ubuntu18.04-x86_64)
 - [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/overview.html) to allow docker containers to use GPUs.
 
-## Prequisities
+## Prerequisites
 
 - Ubuntu 18.04
-- Install curl & sudo: `sudo apt-get update && sudo apt-get install -y curl sudo`
+- Install curl: `sudo apt-get install -y curl`
 
 ## Usage
 
