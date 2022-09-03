@@ -3,6 +3,12 @@
 set -uoe pipefail
 
 INSTALL=true
+GIT_SHA=main
+
+function die() {
+    echo >&2 -e ERROR: "$@"
+    exit 1
+}
 
 parse_args() {
     while [[ $# -gt 0 ]]; do
@@ -11,7 +17,17 @@ parse_args() {
         case $key in
         -s | --skip-install)
             INSTALL=false
-            shift # past argument
+            shift # next argument
+            ;;
+        -u | --install-user)
+            shift
+            INSTALL_USER="$1"
+            shift
+            ;;
+        -g | --git-sha)
+            shift
+            GIT_SHA="$1"
+            shift
             ;;
         *)
             echo "Unrecognized argument $key"
@@ -23,15 +39,23 @@ parse_args() {
 
 parse_args "$@"
 
-TARBALL_URL=$(curl -s https://api.github.com/repos/tekumara/setup-nvidia/releases/latest | grep tarball | cut -d '"' -f 4)
+USER=$(whoami)
 
-if ! curl --progress-bar --fail -L "$TARBALL_URL" -o "/tmp/setup-nvidia.tar.gz"; then
-    echo "Download failed.  Check that the release/filename are correct."
-    exit 1
+if [[ "$USER" == "root" && -z "${INSTALL_USER-}" ]]; then
+    die "When run as root must specify an install user via -u"
 fi
 
-echo "Extracting install scripts to /tmp/"
-tar -xvf /tmp/setup-nvidia.tar.gz -C /tmp --strip-components=1
+tarball_url="https://github.com/tekumara/setup-nvidia/tarball/$GIT_SHA"
+echo "Downloading $tarball_url"
+if ! curl --progress-bar --fail -L "$tarball_url" -o "/tmp/setup-nvidia.tar.gz"; then
+    die "Download failed.  Check that the URL is correct."
+fi
+
+dir=/tmp/setup-nvidia
+mkdir -p $dir
+
+echo "Extracting install scripts to $dir"
+tar -xvf /tmp/setup-nvidia.tar.gz -C $dir --strip-components=1
 
 if [[ "$INSTALL" = false ]]; then
     echo "Skipping install"
@@ -43,4 +67,6 @@ else
     sudo /tmp/install/nvidia-drivers.sh
     sudo /tmp/install/cuda.sh
     sudo /tmp/install/nvidia-docker.sh
+
+    echo "Done ✨."
 fi
