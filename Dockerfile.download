@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 
 # setup sudo and ubuntu user with sudo rights and no password
 ENV DEBIAN_FRONTEND noninteractive

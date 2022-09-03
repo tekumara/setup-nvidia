@@ -1,14 +1,18 @@
-# nvidia install scripts for ubuntu 18.04
+# nvidia install scripts for ubuntu 20.04
 
 Includes:
 
 - nvidia kernel drivers
-- CUDA 10.1 install scripts adapted from [nvidia/container-images/cuda](https://gitlab.com/nvidia/container-images/cuda/-/tree/master/dist/10.1/ubuntu18.04-x86_64)
+- CUDA 11.2 install scripts adapted from [nvidia/container-images/cuda](https://gitlab.com/nvidia/container-images/cuda)
 - [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/overview.html) to allow docker containers to use GPUs.
+
+## But why?
+
+Because `sudo apt-get install cuda-runtime-11-2` doesn't work.
 
 ## Prerequisites
 
-- Ubuntu 18.04
+- Ubuntu 20.04
 - Install curl: `sudo apt-get install -y curl`
 
 ## Usage
@@ -36,7 +40,7 @@ nvidia-smi
 To test the container toolkit:
 
 ```
-docker run --gpus all --rm nvidia/cuda:10.1-cudnn7-runtime-ubuntu18.04 nvidia-smi
+docker run --gpus all --rm nvidia/cuda:11.2.2-cudnn8-runtime-ubuntu20.04 nvidia-smi
 ```
 
 To diagnose:
