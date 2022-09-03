@@ -8,7 +8,7 @@ Includes:
 
 ## But why?
 
-Because `sudo apt-get install cuda-runtime-11-2` doesn't work.
+When `sudo apt-get install cuda-runtime-11-2` doesn't work.
 
 ## Prerequisites
 

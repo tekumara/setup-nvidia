@@ -14,8 +14,8 @@ WORKDIR /home/ubuntu
 ENV LANG=C.UTF-8
 
 # copy files one at a time to create individual caching layers
-COPY install/system.sh /tmp/install/
-RUN sudo /tmp/install/system.sh
+COPY install/nvidia-repo.sh /tmp/install/
+RUN sudo /tmp/install/nvidia-repo.sh
 
 COPY install/nvidia-drivers.sh /tmp/install/
 RUN sudo /tmp/install/nvidia-drivers.sh

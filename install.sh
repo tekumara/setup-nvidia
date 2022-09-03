@@ -52,7 +52,7 @@ else
     set -x
 
     export DEBIAN_FRONTEND=noninteractive
-    sudo $dir/install/system.sh
+    sudo $dir/install/nvidia-repo.sh
     sudo $dir/install/nvidia-drivers.sh
     sudo $dir/install/cuda.sh
     sudo $dir/install/nvidia-docker.sh
