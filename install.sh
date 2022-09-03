@@ -63,10 +63,10 @@ else
     set -x
 
     export DEBIAN_FRONTEND=noninteractive
-    sudo /tmp/install/system.sh
-    sudo /tmp/install/nvidia-drivers.sh
-    sudo /tmp/install/cuda.sh
-    sudo /tmp/install/nvidia-docker.sh
+    sudo $dir/install/system.sh
+    sudo $dir/install/nvidia-drivers.sh
+    sudo $dir/install/cuda.sh
+    sudo $dir/install/nvidia-docker.sh
 
     echo "Done ✨."
 fi

@@ -8,4 +8,4 @@ repo_upgrade: security
 runcmd:
   - apt-get install -y curl
   # install for the ubuntu user
-  - curl -fsSL https://raw.githubusercontent.com/tekumara/setup-nvidia/main/install.sh | bash -s -- -u ubuntu
+  - curl -fsSL https://raw.githubusercontent.com/tekumara/setup-nvidia/main/install.sh | bash -s
