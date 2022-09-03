@@ -19,11 +19,6 @@ parse_args() {
             INSTALL=false
             shift # next argument
             ;;
-        -u | --install-user)
-            shift
-            INSTALL_USER="$1"
-            shift
-            ;;
         -g | --git-sha)
             shift
             GIT_SHA="$1"
@@ -38,12 +33,6 @@ parse_args() {
 }
 
 parse_args "$@"
-
-USER=$(whoami)
-
-if [[ "$USER" == "root" && -z "${INSTALL_USER-}" ]]; then
-    die "When run as root must specify an install user via -u"
-fi
 
 tarball_url="https://github.com/tekumara/setup-nvidia/tarball/$GIT_SHA"
 echo "Downloading $tarball_url"
