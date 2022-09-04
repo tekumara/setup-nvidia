@@ -1,0 +1,31 @@
+FROM nvidia/cuda:11.2.2-cudnn8-runtime-ubuntu20.04
+
+# handle pipefail
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
+# install python 3.9
+RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-key 6A755776 && \
+    . /etc/os-release && \
+    echo "deb http://ppa.launchpad.net/deadsnakes/ppa/ubuntu $VERSION_CODENAME main" > "/etc/apt/sources.list.d/deadsnakes-ubuntu-ppa-$VERSION_CODENAME.list" && \
+    apt-get update && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends python3.9 python3.9-dev curl && \
+    rm -rf /var/lib/apt/lists/* && \
+    # create symlinks in /usr/local/bin which will take precedence on the path
+    ln -s /usr/bin/python3.9 /usr/local/bin/python3 && \
+    ln -s /usr/bin/python3.9 /usr/local/bin/python
+
+# python3-distutils is needed for pip. sourced from https://packages.ubuntu.com/focal-updates/python3-distutils
+# python3.9-venv is needed for `python -m venv`. sourced from deadsnakes.
+# install debs directly, rather than via apt-get, to avoid installing dependencies which include python 3.8
+RUN curl -fsSLo python3-distutils.deb http://mirrors.kernel.org/ubuntu/pool/main/p/python3-stdlib-extensions/python3-distutils_3.8.10-0ubuntu1~20.04_all.deb && \
+    dpkg-deb -x python3-distutils.deb / && \
+    curl -fsSLo python3.9-venv.deb http://ppa.launchpad.net/deadsnakes/ppa/ubuntu/pool/main/p/python3.9/python3.9-venv_3.9.13-1+focal1_amd64.deb && \
+    dpkg-deb -x python3.9-venv.deb / && \
+    rm python3-distutils.deb python3.9-venv.deb
+
+# install pip directly, rather than via apt-get, to avoid installing python 3.8
+RUN curl -fsSL https://bootstrap.pypa.io/get-pip.py | /usr/local/bin/python3
+
+# tell the k8s-device-plugin to inject all GPUs when running in Kubernetes
+ENV NVIDIA_VISIBLE_DEVICES all
+ENV NVIDIA_DRIVER_CAPABILITIES compute,utility

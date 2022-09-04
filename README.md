@@ -49,6 +49,10 @@ To diagnose:
 nvidia-container-cli -k -d /dev/tty info
 ```
 
+## Docker images
+
+See [images/](images/).
+
 ## Development
 
 A Dockerfile is provided to test the scripts. run `make` to see options for building and running the Dockerfile.
