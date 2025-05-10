@@ -2,11 +2,15 @@
 
 set -euo pipefail
 
-# gnupg2 needed to add third party repos
-# curl is used in later scripts
-apt-get update && apt-get install -y --no-install-recommends gnupg2 curl ca-certificates
+# add nvidia repo, eg: https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64
+case "$(uname -m)" in
+    "aarch64") arch="sbsa" ;;
+    "x86_64") arch="x86_64" ;;
+    *) echo "error: unknown arch $(uname -m)" && exit 42 ;;
+esac
 
-# add nvidia repo
-apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/3bf863cc.pub && \
-echo "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64 /" > /etc/apt/sources.list.d/cuda.list && \
+ubuntu_version=22.04
+curl -fsSLo cuda-keyring_1.1-1_all.deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu${ubuntu_version//./}/${arch}/cuda-keyring_1.1-1_all.deb
+dpkg -i cuda-keyring_1.1-1_all.deb
+rm cuda-keyring_1.1-1_all.deb
 apt-get update

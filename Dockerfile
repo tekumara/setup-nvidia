@@ -1,7 +1,7 @@
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 
 # setup sudo and ubuntu user with sudo rights and no password
-ENV DEBIAN_FRONTEND noninteractive
+ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y sudo curl
 RUN adduser --disabled-password --gecos '' ubuntu && adduser ubuntu sudo
@@ -14,6 +14,9 @@ WORKDIR /home/ubuntu
 ENV LANG=C.UTF-8
 
 # copy files one at a time to create individual caching layers
+COPY install/system.sh /tmp/install/
+RUN sudo /tmp/install/system.sh
+
 COPY install/nvidia-repo.sh /tmp/install/
 RUN sudo /tmp/install/nvidia-repo.sh
 

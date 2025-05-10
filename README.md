@@ -12,7 +12,7 @@ When `sudo apt-get install cuda-runtime-11-2` doesn't work.
 
 ## Prerequisites
 
-- Ubuntu 20.04
+- Ubuntu 22.04
 - Install curl: `sudo apt-get install -y curl`
 
 ## Usage
