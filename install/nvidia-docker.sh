@@ -16,6 +16,9 @@ apt-get update
 # and we just want nvidia-container-toolkit (12.5MB)
 apt-get install -y --no-install-recommends nvidia-container-toolkit
 
+# configure
+nvidia-ctk runtime configure --runtime=docker
+
 if [[ $(pgrep docker) ]]; then
     RED='\033[0;31m'
     NC='\033[0m' # No Color
