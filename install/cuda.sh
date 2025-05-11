@@ -21,7 +21,7 @@ esac
 
 
 # After this operation, 150 MB of additional disk space will be used
-apt-get install -y cuda-runtime-12-9
+apt-get install -y cuda-runtime-12-2
 exit 0
 
 # ln -s cuda-12.2 /usr/local/cuda
