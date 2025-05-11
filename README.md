@@ -3,12 +3,12 @@
 Includes:
 
 - nvidia kernel drivers
-- CUDA 11.2 install scripts adapted from [nvidia/container-images/cuda](https://gitlab.com/nvidia/container-images/cuda)
+- CUDA 12.2 install scripts adapted from [nvidia/container-images/cuda](https://gitlab.com/nvidia/container-images/cuda)
 - [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/overview.html) to allow docker containers to use GPUs.
 
 ## But why?
 
-When `sudo apt-get install cuda-runtime-11-2` doesn't work.
+When `sudo apt-get install cuda-toolkit-12-2 libcudnn8` doesn't work.
 
 ## Prerequisites
 
