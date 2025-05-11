@@ -2,7 +2,7 @@
 
 Includes:
 
-- [Open NVIDIA kernel drivers 570](https://docs.nvidia.com/datacenter/tesla/tesla-release-notes-570-133-20/index.html). Note these won't support the older Maxwell, Pascal, or Volta architectures - see [Supported GPUs](https://developer.nvidia.com/blog/nvidia-transitions-fully-towards-open-source-gpu-kernel-modules/#supported_gpus).
+- Open NVIDIA kernel drivers 575. Note these won't support the older Maxwell, Pascal, or Volta architectures - see [Supported GPUs](https://developer.nvidia.com/blog/nvidia-transitions-fully-towards-open-source-gpu-kernel-modules/#supported_gpus).
 - CUDA 12.2 install scripts adapted from [nvidia/container-images/cuda](https://gitlab.com/nvidia/container-images/cuda)
 - [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/overview.html) to allow docker containers to use GPUs.
 
