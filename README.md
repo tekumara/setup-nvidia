@@ -1,4 +1,4 @@
-# nvidia install scripts for ubuntu 20.04
+# nvidia install scripts for ubuntu 22.04
 
 Includes:
 
@@ -8,7 +8,9 @@ Includes:
 
 ## But why?
 
-When `sudo apt-get install cuda-toolkit-12-2 libcudnn8` doesn't work.
+When `sudo apt-get install cuda-toolkit-12-2 libcudnn8` doesn't work or you want to save disk space.
+
+`cuda-toolkit-12-2 libcudnn8` consumes 7636 MB of additional disk space, whereas [cuda.sh](install/cuda.sh) consumes ~3200 MB.
 
 ## Prerequisites
 

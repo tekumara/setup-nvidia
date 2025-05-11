@@ -3,7 +3,7 @@
 set -euo pipefail
 
 # install version 570.133.20
-# 1545 MB of additional disk space will be used.
+# 950 MB of additional disk space will be used.
 # TODO: try --no-install-recommends
 sudo apt-get install -y nvidia-open-570
 

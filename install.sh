@@ -3,7 +3,7 @@
 set -uoe pipefail
 
 INSTALL=true
-GIT_SHA=main
+GIT_SHA=${GITHUB_SHA:-main}
 
 function die() {
     echo >&2 -e ERROR: "$@"

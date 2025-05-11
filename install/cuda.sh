@@ -18,8 +18,7 @@ case "$(uname -m)" in
     *) echo "error: unknown arch $(uname -m)" && exit 42 ;;
 esac
 
-#sudo apt-get install -y --no-install-recommends cuda-toolkit-12-2 libcudnn8
-
+# After this operation, 150 MB of additional disk space will be used
 apt-get install -y --no-install-recommends \
     cuda-cudart-12-2=${NV_CUDA_CUDART_VERSION} \
     ${NV_CUDA_COMPAT_PACKAGE}
@@ -45,7 +44,7 @@ NV_LIBNCCL_PACKAGE_VERSION=2.19.3-1
 NCCL_VERSION=2.19.3-1
 NV_LIBNCCL_PACKAGE=${NV_LIBNCCL_PACKAGE_NAME}=${NV_LIBNCCL_PACKAGE_VERSION}+cuda12.2
 
-# XX MB
+# After this operation, 1948 MB of additional disk space will be used
 apt-get install -y --no-install-recommends \
     cuda-libraries-12-2=${NV_CUDA_LIB_VERSION} \
     ${NV_LIBNPP_PACKAGE} \
@@ -65,7 +64,7 @@ NV_CUDNN_VERSION=8.9.6.50
 NV_CUDNN_PACKAGE_NAME="libcudnn8"
 NV_CUDNN_PACKAGE="libcudnn8=$NV_CUDNN_VERSION-1+cuda12.2"
 
-# XX MB
+# After this operation, 1099 MB of additional disk space will be used
 apt-get install -y --no-install-recommends \
     ${NV_CUDNN_PACKAGE} \
     && apt-mark hold ${NV_CUDNN_PACKAGE_NAME}
