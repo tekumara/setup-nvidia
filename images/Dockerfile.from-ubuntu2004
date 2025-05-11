@@ -28,7 +28,7 @@ RUN curl -fsSLo python3-distutils.deb http://mirrors.kernel.org/ubuntu/pool/main
 RUN curl -fsSL https://bootstrap.pypa.io/get-pip.py | /usr/local/bin/python3
 
 # install same packages as the nvidia/cuda:11.2.2-cudnn8-runtime-ubuntu20.04 docker image
-# adapted from https://github.com/tekumara/setup-nvidia/blob/main/install/cuda.sh
+# adapted from https://github.com/tekumara/setup-nvidia/blob/main/install/nvidia-cuda.sh
 # cuda-libraries includes: cuda-cudart cuda-nvrtc libcublas libcufft libcurand libcusolver libcusparse libnpp libnvjpeg
 RUN export CUDA=11-2 && apt-get update && apt-get install -y --no-install-recommends gnupg2 ca-certificates && \
     apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/3bf863cc.pub && \

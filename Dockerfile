@@ -23,8 +23,8 @@ RUN sudo /tmp/install/nvidia-repo.sh
 COPY install/nvidia-drivers.sh /tmp/install/
 RUN sudo /tmp/install/nvidia-drivers.sh
 
-COPY install/cuda.sh /tmp/install/
-RUN sudo /tmp/install/cuda.sh
+COPY install/nvidia-cuda.sh /tmp/install/
+RUN sudo /tmp/install/nvidia-cuda.sh
 
 COPY install/nvidia-docker.sh /tmp/install/
 RUN sudo /tmp/install/nvidia-docker.sh

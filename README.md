@@ -10,7 +10,7 @@ Includes:
 
 When `sudo apt-get install cuda-toolkit-12-2 libcudnn8` doesn't work or you want to save disk space.
 
-`cuda-toolkit-12-2 libcudnn8` consumes 7636 MB of additional disk space, whereas [cuda.sh](install/cuda.sh) consumes ~3200 MB.
+`cuda-toolkit-12-2 libcudnn8` consumes 7636 MB of additional disk space, whereas [nvidia-cuda.sh](install/nvidia-cuda.sh) consumes ~3200 MB.
 
 ## Prerequisites
 
@@ -79,8 +79,6 @@ libnvjitlink-12-2
 libnvjpeg-12-2
 libcudnn8
 ```
-
-
 
 ## Development
 

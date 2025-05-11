@@ -55,7 +55,7 @@ else
     sudo $dir/install/system.sh
     sudo $dir/install/nvidia-repo.sh
     sudo $dir/install/nvidia-drivers.sh
-    sudo $dir/install/cuda.sh
+    sudo $dir/install/nvidia-cuda.sh
     sudo $dir/install/nvidia-docker.sh
 
     echo "Done ✨."
