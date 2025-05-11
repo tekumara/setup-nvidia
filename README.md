@@ -55,6 +55,33 @@ nvidia-container-cli -k -d /dev/tty info
 
 See [images/](images/).
 
+## Packages installed
+
+```
+cuda-compat-12-2
+cuda-cudart-12-2
+cuda-toolkit-12-2-config-common
+cuda-toolkit-12-config-common
+cuda-toolkit-config-common
+cuda-libraries-12-2
+cuda-nvrtc-12-2
+cuda-nvtx-12-2
+cuda-opencl-12-2
+libcublas-12-2
+libcufft-12-2
+libcufile-12-2
+libcurand-12-2
+libcusolver-12-2
+libcusparse-12-2
+libnccl2
+libnpp-12-2
+libnvjitlink-12-2
+libnvjpeg-12-2
+libcudnn8
+```
+
+
+
 ## Development
 
 A Dockerfile is provided to test the scripts. run `make` to see options for building and running the Dockerfile.

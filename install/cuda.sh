@@ -18,7 +18,12 @@ case "$(uname -m)" in
     *) echo "error: unknown arch $(uname -m)" && exit 42 ;;
 esac
 
-# After this operation, 150 MB of additional disk space will be used
+# The following NEW packages will be installed:
+#   cuda-compat-12-2 cuda-cudart-12-2 cuda-toolkit-12-2-config-common
+#   cuda-toolkit-12-config-common cuda-toolkit-config-common
+# 0 upgraded, 5 newly installed, 0 to remove and 37 not upgraded.
+# Need to get 33.8 MB of archives.
+# After this operation, 150 MB of additional disk space will be use
 apt-get install -y --no-install-recommends \
     cuda-cudart-12-2=${NV_CUDA_CUDART_VERSION} \
     ${NV_CUDA_COMPAT_PACKAGE}
@@ -44,6 +49,12 @@ NV_LIBNCCL_PACKAGE_VERSION=2.19.3-1
 NCCL_VERSION=2.19.3-1
 NV_LIBNCCL_PACKAGE=${NV_LIBNCCL_PACKAGE_NAME}=${NV_LIBNCCL_PACKAGE_VERSION}+cuda12.2
 
+# The following NEW packages will be installed:
+#   cuda-libraries-12-2 cuda-nvrtc-12-2 cuda-nvtx-12-2 cuda-opencl-12-2
+#   libcublas-12-2 libcufft-12-2 libcufile-12-2 libcurand-12-2 libcusolver-12-2
+#   libcusparse-12-2 libnccl2 libnpp-12-2 libnvjitlink-12-2 libnvjpeg-12-2
+# 0 upgraded, 14 newly installed, 0 to remove and 37 not upgraded.
+# Need to get 765 MB of archives.
 # After this operation, 1948 MB of additional disk space will be used
 apt-get install -y --no-install-recommends \
     cuda-libraries-12-2=${NV_CUDA_LIB_VERSION} \
@@ -64,6 +75,10 @@ NV_CUDNN_VERSION=8.9.6.50
 NV_CUDNN_PACKAGE_NAME="libcudnn8"
 NV_CUDNN_PACKAGE="libcudnn8=$NV_CUDNN_VERSION-1+cuda12.2"
 
+# The following NEW packages will be installed:
+#   libcudnn8
+# 0 upgraded, 1 newly installed, 0 to remove and 38 not upgraded.
+# Need to get 444 MB of archives.
 # After this operation, 1099 MB of additional disk space will be used
 apt-get install -y --no-install-recommends \
     ${NV_CUDNN_PACKAGE} \
