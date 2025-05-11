@@ -13,7 +13,7 @@ set -x
 
 NV_CUDA_CUDART_VERSION=12.2.140-1
 case "$(uname -m)" in
-    "aarch64") NV_CUDA_CUDART_VERSION= ;;
+    "aarch64") NV_CUDA_COMPAT_PACKAGE= ;;
     "x86_64")  NV_CUDA_COMPAT_PACKAGE=cuda-compat-12-2 ;;
     *) echo "error: unknown arch $(uname -m)" && exit 42 ;;
 esac
