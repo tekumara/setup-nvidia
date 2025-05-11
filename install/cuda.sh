@@ -18,10 +18,11 @@ case "$(uname -m)" in
     *) echo "error: unknown arch $(uname -m)" && exit 42 ;;
 esac
 
+
+
 # After this operation, 150 MB of additional disk space will be used
-apt-get install -y --no-install-recommends \
-    cuda-cudart-12-2=${NV_CUDA_CUDART_VERSION} \
-    ${NV_CUDA_COMPAT_PACKAGE}
+apt-get install -y cuda-runtime-12-9
+exit 0
 
 # ln -s cuda-12.2 /usr/local/cuda
 
