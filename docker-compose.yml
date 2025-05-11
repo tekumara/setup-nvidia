@@ -1,0 +1,8 @@
+services:
+  dev:
+    image: ubuntu-nvidia:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # enable tini so SIGINT (Ctrl+C) is handled when run interactively with a tty
+    init: true
